@@ -1,6 +1,6 @@
 require 'erb'
 
-require './config.rb'
+require_relative '../config.rb'
 
 module Lib
   include MyRackApp::Config

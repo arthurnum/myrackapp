@@ -3,8 +3,8 @@ require 'rack'
 require 'puma'
 
 
-require './config.rb'
-require './index.rb'
+require_relative 'config.rb'
+require_relative 'index.rb'
 
 include MyRackApp::Config
 
@@ -12,7 +12,7 @@ puma = Rack::Handler.get(:puma)
 
 app = Rack::Builder.app do
   use Rack::Lint
-  use Rack::Static, urls: ["/bootstrap"]
+  use Rack::Static, urls: ["/bootstrap", "/scripts"]
 
   map "/" do
     run Index.new

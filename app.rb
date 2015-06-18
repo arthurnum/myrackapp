@@ -12,7 +12,7 @@ puma = Rack::Handler.get(:puma)
 
 app = Rack::Builder.app do
   use Rack::Lint
-  use Rack::Static, urls: ["/bootstrap", "/scripts"]
+  use Rack::Static, urls: ["/bootstrap", "/scripts", "/templates"]
 
   map "/" do
     run Index.new

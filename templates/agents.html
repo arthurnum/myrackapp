@@ -19,8 +19,8 @@ Agents
 
   <tbody>
     <tr ng-repeat="row in data_set.rows">
-      <td ng-repeat="(key, value) in row">
-        <span ng-bind="value"></span>
+      <td ng-repeat="field in data_set.fields">
+        <span ng-bind="row.{{field}}"></span>
       </td>
     </tr>
   </tbody>

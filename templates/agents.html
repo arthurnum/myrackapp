@@ -1,4 +1,13 @@
 Agents
+
+<button ng-click="openForm = true">
+  Add
+</button>
+<form ng-show="openForm" ng-submit="submitNewAgent()">
+  <input ng-model="newAgentName">
+  <input type="submit" id="submit" value="Submit" />
+</form>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -7,4 +16,12 @@ Agents
       </th>
     </tr>
   </thead>
+
+  <tbody>
+    <tr ng-repeat="row in data_set.rows">
+      <td ng-repeat="(key, value) in row">
+        <span ng-bind="value"></span>
+      </td>
+    </tr>
+  </tbody>
 </table>

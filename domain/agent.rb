@@ -1,3 +1,8 @@
+require 'pg'
+require 'json_builder'
+
+require_relative '../config'
+
 module Domain
   class Agent
 
@@ -5,8 +10,13 @@ module Domain
 
     class << self
 
-      def select_all(id)
-
+      def select_all
+        conn = PG.connect(MyRackApp::Config::DB_CONFIG)
+        res = conn.exec("SELECT * FROM agents;")
+        conn.close
+        json = JSONBuilder::Compiler.generate do
+          fields res.fields
+        end
       end
 
     end

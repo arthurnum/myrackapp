@@ -1,10 +1,10 @@
-require 'pg'
 require 'rack'
 require 'puma'
 
 
 require_relative 'config.rb'
 require_relative 'index.rb'
+require_relative 'domain/agent'
 
 include MyRackApp::Config
 
@@ -19,7 +19,7 @@ app = Rack::Builder.app do
   end
 
   map "/hi" do
-    run proc {|env| [200, {"Content-Type" => "text/html"}, ["sdfsdfdsf"]]}
+    run proc {|env| [ 200, {"Content-Type" => "application/json"}, [Domain::Agent.select_all] ]}
   end
 end
 
